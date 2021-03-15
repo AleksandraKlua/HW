@@ -24,13 +24,4 @@
         android:text="@string/authorization"
         />
 
-    <!--<Switch
-        android:id="@+id/switch_mode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:paddingTop="300dp"
-        android:thumbTint="@color/green_3"
-        android:switchMinWidth="60dp"
-        android:checked="true"/>-->
 </LinearLayout>
