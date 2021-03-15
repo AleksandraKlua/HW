@@ -1,6 +1,20 @@
 <resources>
-    <string name="app_name">Lesson1</string>
-    <string name="enter">Нажми</string>
-    <string name="let_us_know">Будем знакомы</string>
-    <string name="hello_username">Привет, %1$s!</string>
+    <string name="app_name">HW2</string>
+    <string name="registration">Регистрация</string>
+    <string name="authorization">Авторизация</string>
+    <string name="lol">Лол</string>
+    <string name="kek">Кек</string>
+    <string name="email">E-mail</string>
+    <string name="enter_email">Введите E-mail</string>
+    <string name="real_email">simpleEmail@pochta.kek</string>
+    <string name="first_name">Имя</string>
+    <string name="last_name">Фамилия</string>
+    <string name="password">Пароль</string>
+    <string name="repeat_password">Подтверждение пароля</string>
+    <string name="signin_question">Уже есть аккаунт?</string>
+    <string name="signin">Войти</string>
+    <string name="register_question">Нет аккаунта?</string>
+    <string name="register">Зарегайся!</string>
+    <string name="message">Все поля должны быть заполнены!</string>
+    <string name="not_match_passwords">Пароли не совпадают!</string>
 </resources>
