@@ -28,7 +28,15 @@
         <item name="android:fontFamily">Roboto</item>
     </style>
 
-    <style name="field">
-        <item name="android:drawableEnd">@drawable/unlock</item>
+    <style name="Title" parent="Widget.AppCompat.TextView">
+       <item name="android:textColor">@color/green_3</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="MessageText" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/salmon</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>
