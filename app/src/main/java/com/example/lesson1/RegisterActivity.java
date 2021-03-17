@@ -15,6 +15,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private TextView messageText;
     private EditText password;
     private EditText repeatPassword;
+    private View btnRegister;
 
 
     @Override
@@ -22,9 +23,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.register_layout);
 
-        final View btnRegister;
-
-        btnRegister = findViewById(R.id.btn_registration);
+        btnRegister = findViewById(R.id.btnRegistration);
         btnRegister.setOnClickListener(this);
         messageText = findViewById(R.id.message);
 
@@ -33,10 +32,16 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(@NonNull View v){
-        if (v.getId() == R.id.btn_registration){
-            onSubmitBtnClicked();
-        }else if (v.getId() == R.id.signin){
-            startActivity(new Intent(this, SigninActivity.class));
+        final int idBtnRegistration = R.id.btnRegistration;
+        final int idSignin = R.id.signin;
+
+        switch(v.getId()){
+            case idBtnRegistration:
+                onSubmitBtnClicked();
+                break;
+            case idSignin:
+                startActivity(new Intent(this, SigninActivity.class));
+                break;
         }
     }
 
@@ -46,12 +51,14 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     private boolean fieldsNotEmpty(){
         EditText email = findViewById(R.id.email);
+        EditText firstName = findViewById(R.id.firstName);
+        EditText lastName = findViewById(R.id.lastName);
         password = findViewById(R.id.password);
-        EditText firstName = findViewById(R.id.first_name);
-        EditText lastName = findViewById(R.id.last_name);
-        repeatPassword = findViewById(R.id.repeat_password);
+        repeatPassword = findViewById(R.id.repeatPassword);
 
-        return !email.getText().toString().isEmpty() && !password.getText().toString().isEmpty() && !firstName.getText().toString().isEmpty() && !lastName.getText().toString().isEmpty() && !repeatPassword.getText().toString().isEmpty();
+        return !email.getText().toString().isEmpty() && !firstName.getText().toString().isEmpty() &&
+                !lastName.getText().toString().isEmpty() && !password.getText().toString().isEmpty() &&
+                !repeatPassword.getText().toString().isEmpty();
     }
 
     private void checkPasswords(){

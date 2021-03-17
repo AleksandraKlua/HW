@@ -11,16 +11,15 @@ import androidx.annotation.NonNull;
 
 public class SigninActivity extends Activity implements View.OnClickListener{
     private TextView messageText;
+    private View btnSignin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin_layout);
 
-        final View btnSignin;
-
         messageText = findViewById(R.id.message);
-        btnSignin = findViewById(R.id.btn_signin);
+        btnSignin = findViewById(R.id.btnSignin);
         btnSignin.setOnClickListener(this);
 
         messageText.setVisibility(View.INVISIBLE);
@@ -28,10 +27,16 @@ public class SigninActivity extends Activity implements View.OnClickListener{
 
     @Override
     public void onClick(@NonNull View v){
-        if (v.getId() == R.id.btn_signin){
-            onBtnClicked();
-        }else if (v.getId() == R.id.register){
-            startActivity(new Intent(this, RegisterActivity.class));
+        final int idBtnSignin = R.id.btnSignin;
+        final int idRegister = R.id.register;
+
+        switch(v.getId()){
+            case idBtnSignin:
+                onBtnClicked();
+                break;
+            case idRegister:
+                startActivity(new Intent(this, RegisterActivity.class));
+                break;
         }
     }
 
