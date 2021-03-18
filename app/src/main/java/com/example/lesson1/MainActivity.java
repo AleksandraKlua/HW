@@ -12,7 +12,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(@NonNull View v){
         final int idBtnRegistration = R.id.btnRegistration;
-        final int idBtnSignin = R.id.signin;
+        final int idBtnSignin = R.id.btnSignin;
 
         switch(v.getId()){
             case idBtnRegistration:

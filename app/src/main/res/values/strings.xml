@@ -4,12 +4,12 @@
     <string name="authorization">Авторизация</string>
     <string name="lol">Лол</string>
     <string name="kek">Кек</string>
-    <string name="email"><font size="44">E-mail</font></string>
+    <string name="email"><font size="34">E-mail</font></string>
     <string name="real_email">simpleEmail@pochta.kek</string>
-    <string name="first_name"><font size="44">Имя</font></string>
-    <string name="last_name"><font size="44">Фамилия</font></string>
-    <string name="password"><font size="44">Пароль</font></string>
-    <string name="repeat_password"><font size="44">Подтверждение пароля</font></string>
+    <string name="first_name"><font size="34">Имя</font></string>
+    <string name="last_name"><font size="34">Фамилия</font></string>
+    <string name="password"><font size="34">Пароль</font></string>
+    <string name="repeat_password"><font size="34">Подтверждение пароля</font></string>
     <string name="signin_question">Уже есть аккаунт?</string>
     <string name="signin">Войти</string>
     <string name="register_question">Нет аккаунта?</string>
