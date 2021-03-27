@@ -38,7 +38,7 @@
 
     <style name="MessageText" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/salmon</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textStyle">bold</item>
     </style>
 

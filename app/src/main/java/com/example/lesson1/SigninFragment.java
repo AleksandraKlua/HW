@@ -1,6 +1,7 @@
 package com.example.lesson1;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -20,7 +21,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
     private boolean passwordNotEmpty;
 
     @Override
-    public void onCreate(@NonNull Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
     }
 
@@ -73,21 +74,33 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
         DialogFragment dialog = new CustomDialogFragment();
         Bundle sendMessage = new Bundle();
         if(fieldsNotEmpty()){
-            String hello = "hello";
+            User user = new User (email.getText().toString(), password.getText().toString());
+            String messageText = "Привет, рады тебя снова видеть!";
+
+            Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+            intent.putExtra("Message", messageText);
+            intent.putExtra("User", user);
+
+            startActivity(intent);
         }
         else {
-            String field = "";
-            if (!emailNotEmpty) {
-                field = field.concat("\n- ").concat(getResources().getString(R.string.email));
-            }
-            if (!passwordNotEmpty) {
-                field = field.concat("\n- ").concat(getResources().getString(R.string.password));
-            }
+            String field = messageText();
             sendMessage.putString("message", getResources().getString(R.string.empty_fields)
                     .concat(field));
             dialog.setArguments(sendMessage);
             dialog.show(getFragmentManager(), "dialog");
         }
+    }
+
+    private String messageText(){
+        String field = "";
+        if (!emailNotEmpty) {
+            field = field.concat("\n- ").concat(getResources().getString(R.string.email));
+        }
+        if (!passwordNotEmpty) {
+            field = field.concat("\n- ").concat(getResources().getString(R.string.password));
+        }
+        return field;
     }
 
     private boolean fieldsNotEmpty(){

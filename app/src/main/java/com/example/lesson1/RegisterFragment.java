@@ -1,5 +1,6 @@
 package com.example.lesson1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,16 +49,6 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     }
 
     @Override
-    public void onResume(){
-        super.onResume();
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-    }
-
-    @Override
     public void onClick(@NonNull View v){
         final int idBtnRegistration = R.id.btnRegistration;
         final int idSignin = R.id.signin;
@@ -102,40 +93,55 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
         if(fieldsNotEmpty()) {
             if(checkPasswordLength()){
-                sendMessage.putString("message", getResources().getString(R.string.wrong_password_length));
-                dialog.setArguments(sendMessage);
-                dialog.show(getFragmentManager(), "dialog");
+                showDialogFragment(R.string.wrong_password_length);
             }else{
                 if (password.getText().toString().equals(repeatPassword.getText().toString())) {
-                    String hello = "hello";
+                    User user = new User (email.getText().toString(), password.getText().toString());
+                    String messageText = "Успешная регистрация!";
+
+                    Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+                    intent.putExtra("Message", messageText);
+                    intent.putExtra("User", user);
+
+                    startActivity(intent);
                 } else {
-                    sendMessage.putString("message", getResources().getString(R.string.not_match_passwords));
-                    dialog.setArguments(sendMessage);
-                    dialog.show(getFragmentManager(), "dialog");
+                    showDialogFragment(R.string.not_match_passwords);
                 }
             }
         }else{
-            String field = "";
-            if (!emailNotEmpty){
-                field = field.concat("\n- ").concat(getResources().getString(R.string.email));
-            }
-            if(!firstNameNotEmpty){
-                field = field.concat("\n- ").concat(getResources().getString(R.string.first_name));
-            }
-            if(!lastnameNotEmpty){
-                field = field.concat("\n- ").concat(getResources().getString(R.string.last_name));
-            }
-            if (!passwordNotEmpty){
-                field = field.concat("\n- ").concat(getResources().getString(R.string.password));
-            }
-            if(!repeatPasswordNotEmpty){
-                field = field.concat("\n- ").concat(getResources().getString(R.string.repeat_password));
-            }
-            sendMessage.putString("message", getResources().getString(R.string.empty_fields)
-                    .concat(field));
-            dialog.setArguments(sendMessage);
-            dialog.show(getFragmentManager(), "dialog");
+            showDialogFragment(R.string.empty_fields);
         }
+    }
+
+    private String messageText(){
+        String field = "";
+        if (!emailNotEmpty){
+            field = field.concat("\n- ").concat(getResources().getString(R.string.email));
+        }
+        if(!firstNameNotEmpty){
+            field = field.concat("\n- ").concat(getResources().getString(R.string.first_name));
+        }
+        if(!lastnameNotEmpty){
+            field = field.concat("\n- ").concat(getResources().getString(R.string.last_name));
+        }
+        if (!passwordNotEmpty){
+            field = field.concat("\n- ").concat(getResources().getString(R.string.password));
+        }
+        if(!repeatPasswordNotEmpty){
+            field = field.concat("\n- ").concat(getResources().getString(R.string.repeat_password));
+        }
+        return field;
+    }
+
+    private void showDialogFragment(int id){
+        DialogFragment dialog = new CustomDialogFragment();
+        Bundle sendMessage = new Bundle();
+        String field = messageText();
+
+        sendMessage.putString("message", getResources().getString(id)
+                .concat(field));
+        dialog.setArguments(sendMessage);
+        dialog.show(getFragmentManager(), "dialog");
     }
 
 }

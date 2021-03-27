@@ -20,5 +20,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainMenuActivity"
+            android:theme="@style/AppTheme" />
+
     </application>
 </manifest>
