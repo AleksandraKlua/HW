@@ -20,12 +20,5 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/AppTheme">
-        </activity>
-
-        <activity android:name=".SigninActivity"
-            android:theme="@style/AppTheme">
-        </activity>
     </application>
 </manifest>

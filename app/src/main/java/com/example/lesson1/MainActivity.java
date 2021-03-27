@@ -1,27 +1,30 @@
 package com.example.lesson1;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    //final int idRegister = R.id.register;
+    //final int idBtnSignin = R.id.btnSignin;
 
     @Override
     public void onClick(@NonNull View v){
-        final int idBtnRegistration = R.id.btnRegistration;
-        final int idBtnSignin = R.id.btnSignin;
+        //final int idBtnRegistration = R.id.btnRegistration;
 
-        switch(v.getId()){
-            case idBtnRegistration:
-                startActivity(new Intent(this, RegisterActivity.class));
-                break;
-            case idBtnSignin:
-                startActivity(new Intent(this, SigninActivity.class));
-                break;
-        }
+
+        //switch(v.getId()){
+            //case idBtnRegistration:
+                //startActivity(new Intent(this, RegisterFragment.class));
+                //break;
+            //case idBtnSignin:
+                //startActivity(new Intent(this, SigninFragment.class));
+                //break;
+        //}
     }
 
     @Override
@@ -29,8 +32,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.btnRegistration).setOnClickListener(this);
-        findViewById(R.id.btnSignin).setOnClickListener(this);
+        Fragment signinFragment = new SigninFragment();
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.add(R.id.container, signinFragment).commit();
     }
-
 }

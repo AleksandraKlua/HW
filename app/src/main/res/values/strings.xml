@@ -2,6 +2,7 @@
     <string name="app_name">HW2</string>
     <string name="registration">Регистрация</string>
     <string name="authorization">Авторизация</string>
+    <string name="ok">Ок</string>
     <string name="lol">Лол</string>
     <string name="kek">Кек</string>
     <string name="email"><font size="34">E-mail</font></string>
@@ -14,6 +15,7 @@
     <string name="signin">Войти</string>
     <string name="register_question">Нет аккаунта?</string>
     <string name="register">Зарегайся!</string>
-    <string name="message">Все поля должны быть заполнены!</string>
+    <string name="empty_fields">Следующие поля необходимо заполнить: </string>
     <string name="not_match_passwords">Пароли не совпадают!</string>
+    <string name="wrong_password_length">Пароль должен быть длиннее 8 символов</string>
 </resources>
