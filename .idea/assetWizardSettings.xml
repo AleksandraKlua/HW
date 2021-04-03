@@ -33,8 +33,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="person" />
-                            <entry key="sourceFile" value="C:\Users\alexk\AndroidStudioProjects\Lesson1" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="cloud" />
+                            <entry key="sourceFile" value="C:\Users\alexk\Downloads\Union.svg" />
                           </map>
                         </option>
                       </PersistentState>

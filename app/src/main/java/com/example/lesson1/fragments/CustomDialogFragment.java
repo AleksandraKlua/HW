@@ -1,5 +1,6 @@
-package com.example.lesson1;
+package com.example.lesson1.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,8 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.lesson1.R;
+
 public class CustomDialogFragment extends DialogFragment implements View.OnClickListener{
 
+    @SuppressLint("InflateParams")
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         return inflater.inflate(R.layout.fragment_dialog, null);

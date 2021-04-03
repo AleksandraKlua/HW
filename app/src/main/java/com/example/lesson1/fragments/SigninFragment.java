@@ -1,6 +1,5 @@
-package com.example.lesson1;
+package com.example.lesson1.fragments;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,6 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.DialogFragment;
+
+import com.example.lesson1.MainMenuActivity;
+import com.example.lesson1.R;
+import com.example.lesson1.User;
 
 public class SigninFragment extends Fragment implements View.OnClickListener{
     private TextView email;
@@ -73,12 +76,14 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
     private void onBtnClicked(){
         DialogFragment dialog = new CustomDialogFragment();
         Bundle sendMessage = new Bundle();
+        String lastName = "Фамилия";
+        String firstName = "Имя";
+
         if(fieldsNotEmpty()){
-            User user = new User (email.getText().toString(), password.getText().toString());
-            String messageText = "Привет, рады тебя снова видеть!";
+            User user = new User (email.getText().toString(), password.getText().toString(),
+                    lastName, firstName);
 
             Intent intent = new Intent(getActivity(), MainMenuActivity.class);
-            intent.putExtra("Message", messageText);
             intent.putExtra("User", user);
 
             startActivity(intent);

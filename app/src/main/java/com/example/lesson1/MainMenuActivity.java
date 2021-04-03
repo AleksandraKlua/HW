@@ -1,42 +1,86 @@
 package com.example.lesson1;
 
-import android.annotation.SuppressLint;
+import com.example.lesson1.adapter.RvAdapter;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
-import android.widget.Button;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainMenuActivity extends Activity {
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-    @SuppressLint("SetTextI18n")
+import java.util.ArrayList;
+import java.util.Random;
+
+public class MainMenuActivity extends Activity implements View.OnClickListener {
+
+    private final ArrayList<String> chatArray = new ArrayList<>();
+    RecyclerView.Adapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        getUserInfo();
 
-        findViewById(R.id.signin_message);
-        findViewById(R.id.user_info);
+        RecyclerView recyclerView = findViewById(R.id.chat);
+        recyclerView.setHasFixedSize(true);
+        adapter = new RvAdapter();
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setStackFromEnd(true);
 
-        Intent intent = getIntent();
-        Bundle extras = intent.getExtras();
-        TextView message = findViewById(R.id.signin_message);
-        TextView userInfo = findViewById(R.id.user_info);
-        Parcelable user = intent.getParcelableExtra("User");
-        String email = ((User) user).getEmail();
-        String password = ((User) user).getPassword();
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
 
-        if(extras != null){
-            message.setText(extras.getString("Message", "Привет!"));
-        }else{
-            message.setText("Привет");
+        findViewById(R.id.btn_enter).setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v){
+        EditText entryMessageField = findViewById(R.id.entry_message);
+        if(v.getId()== R.id.btn_enter){
+
+            String messageText = entryMessageField.getText().toString();
+            chatArray.add(messageText);
+            if(chatArray.size()==1){
+                chatArray.add("Привет!");
+                chatArray.add("Я твой собеседник. Ты меня не знаешь, но ты прекрасный человек. " +
+                        "Улыбнись :)");
+            }
+
+            ((RvAdapter) adapter).setData(chatArray);
+
+            entryMessageField.setText("");
         }
+    }
+
+    private void getUserInfo(){
+        Intent intent = getIntent();
+        TextView userInfo = findViewById(R.id.user_info);
+        TextView inscription = findViewById(R.id.inscription);
+        Parcelable user = intent.getParcelableExtra("User");
+        String firstName = ((User) user).getFirstName();
+        String lastName = ((User) user).getLastName();
+        String fullName = firstName + " " + lastName;
 
         if(user != null){
-            userInfo.setText("Email: " + email +"\nПароль: " + password);
+            userInfo.setText(fullName);
+            inscription.setText(getRandomNickname());
         }else{
-            userInfo.setText("Данные");
+            userInfo.setText("Имя Фамилия");
+            inscription.setText("Человек");
         }
+    }
+
+    private String getRandomNickname(){
+        String[] nicknames = new String[]{"Властитель мира", "Пушистик", "Рептилоид", "Император",
+                "Друид", "Воин", "Шпион", "Шаман", "Паладин", "Жрец"};
+        Random random = new Random();
+
+        return nicknames[random.nextInt(nicknames.length)];
     }
 }

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
-    tools:context="com.example.lesson1.RegisterFragment">
+    tools:context="com.example.lesson1.fragments.RegisterFragment">
 
     <TextView
         android:id="@+id/lol"
@@ -41,7 +41,6 @@
                 android:layout_height="wrap_content"
                 android:drawableEnd="@drawable/mail"
                 android:hint="@string/email"
-                android:text="@string/real_email"
                 android:inputType="textEmailAddress"
                 android:autofillHints="@string/email" />
 

@@ -18,4 +18,6 @@
     <string name="empty_fields">Следующие поля необходимо заполнить: </string>
     <string name="not_match_passwords">Пароли не совпадают!</string>
     <string name="wrong_password_length">Пароль должен быть длиннее 8 символов</string>
+    <string name="user_foto">User foto</string>
+    <string name="type_here">Напиши сюда…</string>
 </resources>

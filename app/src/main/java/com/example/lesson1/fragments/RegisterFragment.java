@@ -1,4 +1,4 @@
-package com.example.lesson1;
+package com.example.lesson1.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.lesson1.MainMenuActivity;
+import com.example.lesson1.R;
+import com.example.lesson1.User;
+
 public class RegisterFragment extends Fragment implements View.OnClickListener{
     private EditText password;
     private EditText repeatPassword;
@@ -23,7 +27,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     private boolean repeatPasswordNotEmpty;
     private boolean emailNotEmpty;
     private boolean firstNameNotEmpty;
-    private boolean lastnameNotEmpty;
+    private boolean lastNameNotEmpty;
 
 
     @Override
@@ -75,11 +79,11 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     private boolean fieldsNotEmpty(){
         emailNotEmpty = !email.getText().toString().isEmpty();
         firstNameNotEmpty = !firstName.getText().toString().isEmpty();
-        lastnameNotEmpty = !lastName.getText().toString().isEmpty();
+        lastNameNotEmpty = !lastName.getText().toString().isEmpty();
         passwordNotEmpty = !password.getText().toString().isEmpty();
         repeatPasswordNotEmpty = !repeatPassword.getText().toString().isEmpty();
 
-        return emailNotEmpty && firstNameNotEmpty && lastnameNotEmpty && passwordNotEmpty
+        return emailNotEmpty && firstNameNotEmpty && lastNameNotEmpty && passwordNotEmpty
                 && repeatPasswordNotEmpty;
     }
 
@@ -88,19 +92,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     }
 
     private void checkPasswords(){
-        DialogFragment dialog = new CustomDialogFragment();
-        Bundle sendMessage = new Bundle();
 
         if(fieldsNotEmpty()) {
             if(checkPasswordLength()){
                 showDialogFragment(R.string.wrong_password_length);
             }else{
                 if (password.getText().toString().equals(repeatPassword.getText().toString())) {
-                    User user = new User (email.getText().toString(), password.getText().toString());
-                    String messageText = "Успешная регистрация!";
-
+                    User user = new User (email.getText().toString(), password.getText().toString(),
+                            lastName.getText().toString(), firstName.getText().toString());
                     Intent intent = new Intent(getActivity(), MainMenuActivity.class);
-                    intent.putExtra("Message", messageText);
                     intent.putExtra("User", user);
 
                     startActivity(intent);
@@ -121,7 +121,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         if(!firstNameNotEmpty){
             field = field.concat("\n- ").concat(getResources().getString(R.string.first_name));
         }
-        if(!lastnameNotEmpty){
+        if(!lastNameNotEmpty){
             field = field.concat("\n- ").concat(getResources().getString(R.string.last_name));
         }
         if (!passwordNotEmpty){
@@ -138,8 +138,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         Bundle sendMessage = new Bundle();
         String field = messageText();
 
-        sendMessage.putString("message", getResources().getString(id)
-                .concat(field));
+        sendMessage.putString("message", getResources().getString(id).concat(field));
         dialog.setArguments(sendMessage);
         dialog.show(getFragmentManager(), "dialog");
     }

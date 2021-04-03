@@ -1,31 +1,14 @@
 package com.example.lesson1;
 
 import android.os.Bundle;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    //final int idRegister = R.id.register;
-    //final int idBtnSignin = R.id.btnSignin;
+import com.example.lesson1.fragments.SigninFragment;
 
-    @Override
-    public void onClick(@NonNull View v){
-        //final int idBtnRegistration = R.id.btnRegistration;
-
-
-        //switch(v.getId()){
-            //case idBtnRegistration:
-                //startActivity(new Intent(this, RegisterFragment.class));
-                //break;
-            //case idBtnSignin:
-                //startActivity(new Intent(this, SigninFragment.class));
-                //break;
-        //}
-    }
+public class MainActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
