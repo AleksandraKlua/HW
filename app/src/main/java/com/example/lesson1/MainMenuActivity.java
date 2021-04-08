@@ -19,7 +19,8 @@ import java.util.Random;
 public class MainMenuActivity extends Activity implements View.OnClickListener {
 
     private final ArrayList<String> chatArray = new ArrayList<>();
-    RecyclerView.Adapter adapter;
+    private RecyclerView.Adapter adapter;
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -30,7 +31,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
         RecyclerView recyclerView = findViewById(R.id.chat);
         recyclerView.setHasFixedSize(true);
         adapter = new RvAdapter();
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setStackFromEnd(true);
 
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -53,7 +54,7 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
             }
 
             ((RvAdapter) adapter).setData(chatArray);
-
+            linearLayoutManager.scrollToPosition(linearLayoutManager.getItemCount()-1);
             entryMessageField.setText("");
         }
     }
