@@ -43,17 +43,28 @@ public class MainMenuActivity extends Activity implements View.OnClickListener {
     @Override
     public void onClick(View v){
         EditText entryMessageField = findViewById(R.id.entry_message);
-        if(v.getId()== R.id.btn_enter){
 
+        if(v.getId()== R.id.btn_enter){
             String messageText = entryMessageField.getText().toString();
-            chatArray.add(messageText);
-            if(chatArray.size()==1){
-                chatArray.add("Привет!");
-                chatArray.add("Я твой собеседник. Ты меня не знаешь, но ты прекрасный человек. " +
-                        "Улыбнись :)");
+
+            if(!messageText.trim().isEmpty()){
+                chatArray.add(messageText);
             }
 
             ((RvAdapter) adapter).setData(chatArray);
+
+            if(chatArray.size()==1){
+                v.postDelayed(() -> {
+                    chatArray.add("Привет!");
+                    ((RvAdapter) adapter).setData(chatArray);
+                }, 1000);
+                v.postDelayed(() -> {
+                    chatArray.add("Я твой собеседник. Ты меня не знаешь, но ты прекрасный человек. "
+                            + "Улыбнись :)");
+                    ((RvAdapter) adapter).setData(chatArray);
+                }, 5000);
+            }
+
             linearLayoutManager.scrollToPosition(linearLayoutManager.getItemCount()-1);
             entryMessageField.setText("");
         }
