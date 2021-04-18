@@ -1,4 +1,4 @@
-package com.example.lesson1.adapter;
+package com.example.lesson1.view.adapter;
 
 import com.example.lesson1.R;
 
