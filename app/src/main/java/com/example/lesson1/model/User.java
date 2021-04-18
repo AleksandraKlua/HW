@@ -1,13 +1,13 @@
-package com.example.lesson1;
+package com.example.lesson1.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public class User implements Parcelable {
-    private final String email;
-    private final String password;
-    private final String lastName;
-    private final String firstName;
+    private String email;
+    private String password;
+    private String lastName;
+    private String firstName;
 
     public User(String email, String password, String lastName, String firstName){
         this.email = email;
@@ -53,15 +53,31 @@ public class User implements Parcelable {
         return this.email;
     }
 
+    public void setEmail(String email){
+        this.email = email;
+    }
+
     public String getPassword(){
         return this.password;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 
     public String getLastName(){
         return this.lastName;
     }
 
+    public void setLastName(String lastName){
+        this.lastName = lastName;
+    }
+
     public String getFirstName(){
         return this.firstName;
+    }
+
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 }
