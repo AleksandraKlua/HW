@@ -2,132 +2,134 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-    <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent">
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
+
+    <TextView style="@style/Title"
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/kek"/>
+
+    <Space
+        android:id="@+id/emptySpace"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="3"
+        app:layout_constraintBottom_toTopOf="@+id/picture" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/picture"
+        android:layout_width="160dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="24dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/picture" />
+
+    <LinearLayout
+        android:id="@+id/formSignin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
+        android:layout_marginBottom="20dp">
 
-        <TextView style="@style/Title"
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_marginTop="44dp"
-            android:text="@string/kek"/>
-
-        <Space
-            android:id="@+id/emptySpace"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            app:layout_constraintBottom_toTopOf="@+id/picture" />
+            >
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/picture"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginBottom="24dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/picture" />
-
-        <LinearLayout
-            android:id="@+id/formSignin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <com.google.android.material.textfield.TextInputLayout
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                >
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawableEnd="@drawable/mail"
-                    android:hint="@string/email"
-                    android:text="@string/real_email"
-                    android:inputType="textEmailAddress"
-                    android:autofillHints="@string/email" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autofillHints="@string/password"
-                    android:drawableEnd="@drawable/lock"
-                    android:hint="@string/password"
-                    android:inputType="textPassword" />
+                android:drawableEnd="@drawable/mail"
+                android:hint="@string/email"
+                android:text="@string/real_email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="@string/email" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/emptySpace3"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <Button style="@style/Button"
-                android:id="@+id/btnSignin"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/button"
-                android:text="@string/signin" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
+                android:autofillHints="@string/password"
+                android:drawableEnd="@drawable/lock"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/register_question"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/register"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="2dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:onClick="onClick"
-                    android:text="@string/register"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:ignore="onClick" />
-
-            </LinearLayout>
-        </LinearLayout>
-
-        <Space
-            android:id="@+id/emptySpace2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="2" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+
+    <Space
+        android:id="@+id/emptySpace3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="20dp">
+
+        <Button style="@style/Button"
+            android:id="@+id/btnSignin"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/button"
+            android:text="@string/signin" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/register_question"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onClick"
+                android:text="@string/register"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="onClick" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <Space
+        android:id="@+id/emptySpace2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="2" />
+
+</LinearLayout>
 </androidx.core.widget.NestedScrollView>
