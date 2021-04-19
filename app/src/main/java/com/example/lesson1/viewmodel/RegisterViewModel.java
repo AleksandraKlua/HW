@@ -1,14 +1,6 @@
 package com.example.lesson1.viewmodel;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
-import com.example.lesson1.model.User;
-
 public class RegisterViewModel extends FragmentViewModel {
-    private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
-    private final MutableLiveData<String> userLastName = new MutableLiveData<>();
-    private final MutableLiveData<String> userFirstName = new MutableLiveData<>();
     private boolean emailNotEmpty;
     private boolean passwordNotEmpty;
     private boolean repeatPasswordNotEmpty;
@@ -16,32 +8,6 @@ public class RegisterViewModel extends FragmentViewModel {
     private boolean lastNameNotEmpty;
 
     public RegisterViewModel(){
-        userLiveData.setValue(null);
-    }
-
-    public LiveData<User> getUserLiveData(){
-        return userLiveData;
-    }
-
-    public void setUserLastName(String str){
-        userLastName.setValue(str);
-    }
-    public LiveData<String> getUserLastName(){
-
-        return this.userLastName;
-    }
-    public String getUserLastNameString(){
-        return this.userLastName.getValue();
-    }
-
-    public void setUserFirstName(String str){
-        this.userFirstName.setValue(str);
-    }
-    public LiveData<String> getUserFirstName(){
-        return this.userFirstName;
-    }
-    public String getUserFirstNameString(){
-        return this.userFirstName.getValue();
     }
 
     public boolean checkRegistrationFields(String email, String firstName, String lastName, String password,

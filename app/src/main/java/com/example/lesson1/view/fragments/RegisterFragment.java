@@ -98,17 +98,15 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
             if(registerViewModel.checkPasswordLength(passwordStr)){
                 showDialogFragment(R.string.wrong_password_length);
             }else{
-                registerViewModel.getUserLiveData().observe(this, user -> {
-                    if (passwordStr.equals(repeatPasswordStr)) {
-                        user = new User(emailStr, passwordStr, lastNameStr, firstNameStr);
-                        Intent intent = new Intent(getActivity(), MainMenuActivity.class);
-                        intent.putExtra("User", user);
+                if (passwordStr.equals(repeatPasswordStr)) {
+                    User user = new User(emailStr, passwordStr, lastNameStr, firstNameStr);
+                    Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+                    intent.putExtra("User", user);
 
-                        startActivity(intent);
-                    } else {
-                        showDialogFragment(R.string.not_match_passwords);
-                    }
-                });
+                    startActivity(intent);
+                } else {
+                    showDialogFragment(R.string.not_match_passwords);
+                }
             }
         }else{
             showDialogFragment(R.string.empty_fields);

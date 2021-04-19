@@ -77,17 +77,15 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
         String emailStr = email.getText().toString();
         String passwordStr = password.getText().toString();
 
-        signinViewModel.getUserLiveData().observe(this, user -> {
-            if(signinViewModel.checkFields(emailStr, passwordStr)) {
-                user = new User(emailStr, passwordStr, "Фамилия", "Имя");
-                Intent intent = new Intent(getActivity(), MainMenuActivity.class);
-                intent.putExtra("User", user);
+        if(signinViewModel.checkFields(emailStr, passwordStr)) {
+            User user = new User(emailStr, passwordStr, "Фамилия", "Имя");
+            Intent intent = new Intent(getActivity(), MainMenuActivity.class);
+            intent.putExtra("User", user);
 
-                startActivity(intent);
-            }else{
-                showDialog();
-            }
-        });
+            startActivity(intent);
+        }else{
+            showDialog();
+        }
     }
 
     private void showDialog(){
