@@ -22,7 +22,7 @@ public class RegisterViewModel extends ViewModel {
 
     public RegisterViewModel(){
         userLiveData.setValue(null);
-        message.setValue("ok");
+        message.setValue("");
     }
 
     public LiveData<User> getUserLiveData(){
@@ -97,7 +97,7 @@ public class RegisterViewModel extends ViewModel {
     }
 
     public String getStringMessage(){
-        return message.getValue();
+        return String.valueOf(message.getValue());
     }
 
 }

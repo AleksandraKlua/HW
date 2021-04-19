@@ -32,16 +32,15 @@ public class CustomDialogFragment extends DialogFragment implements View.OnClick
     @SuppressLint("FragmentLiveDataObserve")
     public void onViewCreated(@NonNull View view, Bundle savedInstanceBundle){
         super.onViewCreated(view, savedInstanceBundle);
-        RegisterViewModel registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        RegisterViewModel registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
 
         view.findViewById(R.id.btn_ok).setOnClickListener(this);
 
         TextView messageText = view.findViewById(R.id.message);
-        String strMessage = null;
-        if (getArguments() != null) {
-            strMessage = getArguments().getString("message");
-        }
-        messageText.setText(strMessage);
+        registerViewModel.getMessage().observe(this, str ->{
+            str = registerViewModel.getStringMessage();
+            messageText.setText(str);
+        });
     }
 
     @Override

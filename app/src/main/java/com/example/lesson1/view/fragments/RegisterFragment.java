@@ -30,7 +30,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        registerViewModel = ViewModelProviders.of(this).get(RegisterViewModel.class);
+        registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
     }
 
     @Override
@@ -69,7 +69,9 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
     private void getFragment(){
         Fragment signinFragment = new SigninFragment();
-        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        FragmentTransaction ft;
+        assert getFragmentManager() != null;
+        ft = getFragmentManager().beginTransaction();
         ft.setReorderingAllowed(true);
         ft.replace(R.id.container, signinFragment);
         ft.addToBackStack(null);
@@ -114,13 +116,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
     }
 
     private void showDialogFragment(int id){
-
         DialogFragment dialog = new CustomDialogFragment();
-        Bundle sendMessage = new Bundle();
-        String field = registerViewModel.messageText();
-        sendMessage.putString("message", getString(id).concat(field));
-        dialog.setArguments(sendMessage);
+        registerViewModel.setMessageToFragment(getString(id).concat(registerViewModel.messageText()));
         dialog.show(getFragmentManager(), "dialog");
     }
-
 }

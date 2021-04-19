@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.lesson1.model.User;
 import com.example.lesson1.view.MainMenuActivity;
 import com.example.lesson1.R;
+import com.example.lesson1.viewmodel.RegisterViewModel;
 import com.example.lesson1.viewmodel.SigninViewModel;
 
 public class SigninFragment extends Fragment implements View.OnClickListener{
@@ -39,19 +40,11 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated (@NonNull View view, Bundle savedInstanceBundle){
         super.onViewCreated(view, savedInstanceBundle);
 
-        View btnSignin = view.findViewById(R.id.btnSignin);
-        btnSignin.setOnClickListener(this);
-
-        TextView register = view.findViewById(R.id.register);
-        register.setOnClickListener(this);
+        view.findViewById(R.id.btnSignin).setOnClickListener(this);
+        view.findViewById(R.id.register).setOnClickListener(this);
 
         email = view.findViewById(R.id.email);
         password = view.findViewById(R.id.password);
-    }
-
-    @Override
-    public void onResume(){
-        super.onResume();
     }
 
     @Override
@@ -99,11 +92,10 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
 
     private void showDialog(){
         DialogFragment dialog = new CustomDialogFragment();
-        Bundle sendMessage = new Bundle();
+        RegisterViewModel registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
 
         String field = signinViewModel.messageText();
-        sendMessage.putString("message", getResources().getString(R.string.empty_fields).concat(field));
-        dialog.setArguments(sendMessage);
+        registerViewModel.setMessageToFragment(getResources().getString(R.string.empty_fields).concat(field));
         dialog.show(getFragmentManager(), "dialog");
     }
 }
