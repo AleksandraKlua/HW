@@ -1,19 +1,14 @@
 package com.example.lesson1.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
-import com.example.lesson1.R;
 import com.example.lesson1.model.User;
 
-public class RegisterViewModel extends ViewModel {
+public class RegisterViewModel extends FragmentViewModel {
     private final MutableLiveData<User> userLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> userLastName = new MutableLiveData<>();
     private final MutableLiveData<String> userFirstName = new MutableLiveData<>();
-    public final MutableLiveData<String> message = new MutableLiveData<>();
     private boolean emailNotEmpty;
     private boolean passwordNotEmpty;
     private boolean repeatPasswordNotEmpty;
@@ -22,13 +17,11 @@ public class RegisterViewModel extends ViewModel {
 
     public RegisterViewModel(){
         userLiveData.setValue(null);
-        message.setValue("");
     }
 
     public LiveData<User> getUserLiveData(){
         return userLiveData;
     }
-
 
     public void setUserLastName(String str){
         userLastName.setValue(str);
@@ -51,8 +44,7 @@ public class RegisterViewModel extends ViewModel {
         return this.userFirstName.getValue();
     }
 
-
-    public boolean fieldsNotEmpty(String email, String firstName, String lastName, String password,
+    public boolean checkRegistrationFields(String email, String firstName, String lastName, String password,
                                    String repeatPassword){
         emailNotEmpty = !email.isEmpty();
         firstNameNotEmpty = !firstName.isEmpty();
@@ -70,34 +62,13 @@ public class RegisterViewModel extends ViewModel {
 
     public String messageText(){
         String field = "";
-        if (!emailNotEmpty){
-            field = field.concat("\n- ").concat("email");
-        }
-        if(!firstNameNotEmpty){
-            field = field.concat("\n- ").concat("Имя");
-        }
-        if(!lastNameNotEmpty){
-            field = field.concat("\n- ").concat("Фамилия");
-        }
-        if (!passwordNotEmpty){
-            field = field.concat("\n- ").concat("Пароль");
-        }
-        if(!repeatPasswordNotEmpty){
-            field = field.concat("\n- ").concat("Повторите пароль");
-        }
+
+        field = formMessageText(emailNotEmpty, field, "email");
+        field = formMessageText(firstNameNotEmpty, field, "Имя");
+        field = formMessageText(lastNameNotEmpty, field, "Фамилия");
+        field = formMessageText(passwordNotEmpty, field, "Пароль");
+        field = formMessageText(repeatPasswordNotEmpty, field, "Повторите пароль");
+
         return field;
     }
-
-    public void setMessageToFragment(String s){
-        message.setValue(s);
-    }
-
-    public LiveData<String> getMessage(){
-        return message;
-    }
-
-    public String getStringMessage(){
-        return String.valueOf(message.getValue());
-    }
-
 }

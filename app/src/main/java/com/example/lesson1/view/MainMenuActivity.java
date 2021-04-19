@@ -17,8 +17,6 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
 public class MainMenuActivity extends AppCompatActivity implements View.OnClickListener {
 
     private RecyclerView.Adapter adapter;
@@ -31,7 +29,6 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         mainMenuViewModel = ViewModelProviders.of(this).get(MainMenuViewModel.class);
-        //mainMenuViewModel.setChatArray();
         getUserInfo();
 
         RecyclerView recyclerView = findViewById(R.id.chat);
@@ -42,10 +39,8 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(adapter);
 
-        if(mainMenuViewModel.getChatArray().size() != 0){
-            ArrayList<String> chatArray = mainMenuViewModel.getChatArray();
-            ((RvAdapter) adapter).setData(chatArray);
-        }
+        //mainMenuViewModel.setChatArray();
+        ((RvAdapter) adapter).setData(mainMenuViewModel.getChatArray());
 
         findViewById(R.id.btn_enter).setOnClickListener(this);
     }

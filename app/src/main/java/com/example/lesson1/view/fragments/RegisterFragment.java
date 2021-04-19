@@ -2,7 +2,6 @@ package com.example.lesson1.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.lesson1.view.MainMenuActivity;
 import com.example.lesson1.R;
 import com.example.lesson1.model.User;
+import com.example.lesson1.viewmodel.FragmentViewModel;
 import com.example.lesson1.viewmodel.RegisterViewModel;
 
 public class RegisterFragment extends Fragment implements View.OnClickListener{
@@ -93,7 +93,7 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
         String lastNameStr = editTextToString(lastName);
         String firstNameStr = editTextToString(firstName);
 
-        if(registerViewModel.fieldsNotEmpty(emailStr, firstNameStr, lastNameStr, passwordStr,
+        if(registerViewModel.checkRegistrationFields(emailStr, firstNameStr, lastNameStr, passwordStr,
                 repeatPasswordStr)) {
             if(registerViewModel.checkPasswordLength(passwordStr)){
                 showDialogFragment(R.string.wrong_password_length);
@@ -117,7 +117,8 @@ public class RegisterFragment extends Fragment implements View.OnClickListener{
 
     private void showDialogFragment(int id){
         DialogFragment dialog = new CustomDialogFragment();
-        registerViewModel.setMessageToFragment(getString(id).concat(registerViewModel.messageText()));
+        FragmentViewModel fragmentViewModel = ViewModelProviders.of(requireActivity()).get(FragmentViewModel.class);
+        fragmentViewModel.setMessageToFragment(getString(id).concat(registerViewModel.messageText()));
         dialog.show(getFragmentManager(), "dialog");
     }
 }

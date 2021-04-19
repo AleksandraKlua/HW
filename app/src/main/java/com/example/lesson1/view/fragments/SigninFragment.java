@@ -16,7 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.lesson1.model.User;
 import com.example.lesson1.view.MainMenuActivity;
 import com.example.lesson1.R;
-import com.example.lesson1.viewmodel.RegisterViewModel;
+import com.example.lesson1.viewmodel.FragmentViewModel;
 import com.example.lesson1.viewmodel.SigninViewModel;
 
 public class SigninFragment extends Fragment implements View.OnClickListener{
@@ -27,7 +27,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        signinViewModel = ViewModelProviders.of(this).get(SigninViewModel.class);
+        signinViewModel = ViewModelProviders.of(requireActivity()).get(SigninViewModel.class);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
         String passwordStr = password.getText().toString();
 
         signinViewModel.getUserLiveData().observe(this, user -> {
-            if(signinViewModel.fieldsNotEmpty(emailStr, passwordStr)) {
+            if(signinViewModel.checkFields(emailStr, passwordStr)) {
                 user = new User(emailStr, passwordStr, "Фамилия", "Имя");
                 Intent intent = new Intent(getActivity(), MainMenuActivity.class);
                 intent.putExtra("User", user);
@@ -92,10 +92,10 @@ public class SigninFragment extends Fragment implements View.OnClickListener{
 
     private void showDialog(){
         DialogFragment dialog = new CustomDialogFragment();
-        RegisterViewModel registerViewModel = ViewModelProviders.of(requireActivity()).get(RegisterViewModel.class);
-
-        String field = signinViewModel.messageText();
-        registerViewModel.setMessageToFragment(getResources().getString(R.string.empty_fields).concat(field));
+        FragmentViewModel fragmentViewModel = ViewModelProviders.of(requireActivity())
+                .get(FragmentViewModel.class);
+        fragmentViewModel.setMessageToFragment(getResources().getString(R.string.empty_fields)
+                .concat(signinViewModel.messageText()));
         dialog.show(getFragmentManager(), "dialog");
     }
 }
