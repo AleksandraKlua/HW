@@ -3,18 +3,20 @@ package com.example.lesson1.viewmodel;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.lesson1.model.Message;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class MainMenuViewModel extends ViewModel {
-    private final ArrayList<String> chatArray = new ArrayList<>();
-    private final MutableLiveData<ArrayList<String>> chatLiveData  = new MutableLiveData<>();
+    private final ArrayList<Message> chatArray = new ArrayList<>();
+    private final MutableLiveData<ArrayList<Message>> chatLiveData  = new MutableLiveData<>();
 
     public MainMenuViewModel(){
         chatLiveData.setValue(chatArray);
     }
 
-    public MutableLiveData<ArrayList<String>> getChatLiveData(){
+    public MutableLiveData<ArrayList<Message>> getChatLiveData(){
         return chatLiveData;
     }
 
@@ -22,11 +24,11 @@ public class MainMenuViewModel extends ViewModel {
         chatLiveData.setValue(chatArray);
     }
 
-    public void chatList(String message){
+    public void chatList(Message message){
         chatArray.add(message);
     }
 
-    public ArrayList<String> getChatArray(){
+    public ArrayList<Message> getChatArray(){
         return chatArray;
     }
 

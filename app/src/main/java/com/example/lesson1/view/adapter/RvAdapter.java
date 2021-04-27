@@ -1,6 +1,7 @@
 package com.example.lesson1.view.adapter;
 
 import com.example.lesson1.R;
+import com.example.lesson1.model.Message;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,31 +14,33 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
-    ArrayList chatArray = new ArrayList<String>();
+    ArrayList chatArray = new ArrayList<Message>();
 
-    public void setData(ArrayList<String> arr){
+    public void setData(ArrayList<Message> arr){
         chatArray = arr;
         notifyDataSetChanged();
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
         View view;
-        if(viewType == 1 || viewType == 2){
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message_interlocutor, parent, false);
-        }else view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_message, parent, false);
+        if(((Message) chatArray.get(position)).getMessageLabel() == 0){
+            view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_message_interlocutor, parent, false);
+        }else view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_message, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind((String) chatArray.get(position));
+        holder.bind(((Message) chatArray.get(position)).getMessageText());
     }
 
     @Override
-    public int getItemViewType(int postition){
-        return postition;
+    public int getItemViewType(int position){
+        return position;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.example.lesson1.view;
 
 import com.example.lesson1.R;
+import com.example.lesson1.model.Message;
 import com.example.lesson1.model.User;
 import com.example.lesson1.view.adapter.RvAdapter;
 import com.example.lesson1.viewmodel.MainMenuViewModel;
@@ -53,7 +54,9 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
            sendUserMessage();
 
            if(mainMenuViewModel.getChatArray().size() == 1){
-               sendBotMessage(v);
+               sendBotMessage(v, "Привет!", 1000);
+               sendBotMessage(v, "Я твой собеседник. Ты меня не знаешь, но ты " +
+                       "прекрасный человек. Улыбнись :)", 5000);
            }
            linearLayoutManager.scrollToPosition(linearLayoutManager.getItemCount()-1);
         }
@@ -61,27 +64,26 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
 
     private void sendUserMessage(){
         String messageText = entryMessageField.getText().toString();
+        Message userMessage = new Message();
+        userMessage.setMessageLabel(1);
+        userMessage.setMessageText(messageText);
         mainMenuViewModel.getChatLiveData().observe(this, chatArray -> {
             if (!messageText.trim().isEmpty()) {
-                mainMenuViewModel.chatList(messageText);
+                mainMenuViewModel.chatList(userMessage);
                 ((RvAdapter) adapter).setData(chatArray);
             }
         });
         entryMessageField.getText().clear();
     }
 
-    private void sendBotMessage(View v){
-        mainMenuViewModel.getChatLiveData().observe(this, chatArray -> {
-            v.postDelayed(() -> {
-                mainMenuViewModel.chatList("Привет!");
-                ((RvAdapter) adapter).setData(chatArray);
-                }, 1000);
-            v.postDelayed(() -> {
-                mainMenuViewModel.chatList("Я твой собеседник. Ты меня не знаешь, но ты прекрасный человек. "
-                           + "Улыбнись :)");
-                ((RvAdapter) adapter).setData(chatArray);
-                }, 5000);
-        });
+    private void sendBotMessage(View v, String messageText, int time){
+        Message botMessage = new Message();
+        botMessage.setMessageLabel(0);
+        botMessage.setMessageText(messageText);
+        mainMenuViewModel.getChatLiveData().observe(this, chatArray -> v.postDelayed(() -> {
+            mainMenuViewModel.chatList(botMessage);
+            ((RvAdapter) adapter).setData(chatArray);
+            }, time));
     }
 
     private void getUserInfo(){
