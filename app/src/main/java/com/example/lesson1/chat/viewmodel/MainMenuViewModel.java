@@ -1,9 +1,9 @@
-package com.example.lesson1.viewmodel;
+package com.example.lesson1.chat.viewmodel;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.lesson1.model.Message;
+import com.example.lesson1.chat.model.Message;
 
 import java.util.ArrayList;
 import java.util.Random;

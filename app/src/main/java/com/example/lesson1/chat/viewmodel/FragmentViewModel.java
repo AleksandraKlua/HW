@@ -1,4 +1,4 @@
-package com.example.lesson1.viewmodel;
+package com.example.lesson1.chat.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

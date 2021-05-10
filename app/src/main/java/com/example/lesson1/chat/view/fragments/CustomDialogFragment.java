@@ -1,4 +1,4 @@
-package com.example.lesson1.view.fragments;
+package com.example.lesson1.chat.view.fragments;
 
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
@@ -14,7 +14,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.lesson1.R;
-import com.example.lesson1.viewmodel.FragmentViewModel;
+import com.example.lesson1.chat.viewmodel.FragmentViewModel;
 
 public class CustomDialogFragment extends DialogFragment implements View.OnClickListener{
 

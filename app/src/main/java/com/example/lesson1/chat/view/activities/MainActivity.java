@@ -1,4 +1,4 @@
-package com.example.lesson1.view;
+package com.example.lesson1.chat.view.activities;
 
 import android.os.Bundle;
 
@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.lesson1.R;
-import com.example.lesson1.view.fragments.SigninFragment;
+import com.example.lesson1.chat.view.fragments.SigninFragment;
 
 public class MainActivity extends AppCompatActivity{
 

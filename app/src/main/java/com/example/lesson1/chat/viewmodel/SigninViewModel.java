@@ -1,4 +1,4 @@
-package com.example.lesson1.viewmodel;
+package com.example.lesson1.chat.viewmodel;
 import java.lang.String;
 
 public class SigninViewModel extends FragmentViewModel {

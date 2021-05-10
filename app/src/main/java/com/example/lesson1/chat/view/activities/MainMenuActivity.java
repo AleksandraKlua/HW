@@ -1,10 +1,10 @@
-package com.example.lesson1.view;
+package com.example.lesson1.chat.view.activities;
 
 import com.example.lesson1.R;
-import com.example.lesson1.model.Message;
-import com.example.lesson1.model.User;
-import com.example.lesson1.view.adapter.RvAdapter;
-import com.example.lesson1.viewmodel.MainMenuViewModel;
+import com.example.lesson1.chat.model.Message;
+import com.example.lesson1.chat.model.User;
+import com.example.lesson1.chat.view.adapter.RvAdapter;
+import com.example.lesson1.chat.viewmodel.MainMenuViewModel;
 
 import android.content.Intent;
 import android.os.Bundle;

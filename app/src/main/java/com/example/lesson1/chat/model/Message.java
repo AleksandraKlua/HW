@@ -1,4 +1,4 @@
-package com.example.lesson1.model;
+package com.example.lesson1.chat.model;
 
 public class Message {
     private int label; //0 - interlocuter's message, 1 - user's message

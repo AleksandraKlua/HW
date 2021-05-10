@@ -1,7 +1,7 @@
-package com.example.lesson1.view.adapter;
+package com.example.lesson1.chat.view.adapter;
 
 import com.example.lesson1.R;
-import com.example.lesson1.model.Message;
+import com.example.lesson1.chat.model.Message;
 
 import android.view.LayoutInflater;
 import android.view.View;

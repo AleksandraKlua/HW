@@ -1,4 +1,4 @@
-package com.example.lesson1.view.fragments;
+package com.example.lesson1.chat.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProviders;
 
-import com.example.lesson1.model.User;
-import com.example.lesson1.view.MainMenuActivity;
+import com.example.lesson1.chat.model.User;
+import com.example.lesson1.chat.view.activities.MainMenuActivity;
 import com.example.lesson1.R;
-import com.example.lesson1.viewmodel.FragmentViewModel;
-import com.example.lesson1.viewmodel.SigninViewModel;
+import com.example.lesson1.chat.viewmodel.FragmentViewModel;
+import com.example.lesson1.chat.viewmodel.SigninViewModel;
 
 public class SigninFragment extends Fragment implements View.OnClickListener{
     private TextView email;
