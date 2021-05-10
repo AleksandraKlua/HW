@@ -13,4 +13,11 @@
     <color name="salmon">#CF6FB4</color>
     <color name="gray">#DE000000</color>
     <color name="light_grey">#8A8A8A</color>
+    <color name="shadow_grey_1">#0D5E5E5E</color>
+    <color name="shadow_grey_2">#1A5E5E5E</color>
+    <color name="shadow_grey_3">#335E5E5E</color>
+    <color name="shadow_grey_4">#4D5E5E5E</color>
+    <color name="shadow_grey_5">#665E5E5E</color>
+    <color name="net_grey_1">#DCDCDC</color>
+    <color name="net_grey_2">#BCBCBC</color>
 </resources>

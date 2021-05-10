@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="back">Back</string>
+    <string name="title">Title:</string>
+    <string name="type_something_here">Type something here…</string>
+    <string name="send">send</string>
+</resources>

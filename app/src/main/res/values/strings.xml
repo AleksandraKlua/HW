@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HW2</string>
+    <string name="app_name">Networking</string>
     <string name="registration">Регистрация</string>
     <string name="authorization">Авторизация</string>
     <string name="ok">Ок</string>
@@ -20,4 +20,8 @@
     <string name="wrong_password_length">Пароль должен быть длиннее 8 символов</string>
     <string name="user_foto">User foto</string>
     <string name="type_here">Напиши сюда…</string>
+    <string name="albums">Albums</string>
+    <string name="users">Users</string>
+    <string name="create_post">Create post</string>
+    <string name="default_font" translatable="false">sans-serif</string>
 </resources>
